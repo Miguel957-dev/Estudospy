@@ -11,3 +11,4 @@ num = int(input('Digite um número: '))
 raiz = math.sqrt(num)
 print('A raiz de {} é igual á {}.'. format(num, math.ceil(raiz)))
 #esse codigo arrendoda o valor para mais 
+

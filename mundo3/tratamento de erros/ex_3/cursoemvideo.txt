@@ -1,0 +1,4 @@
+Miguel;17
+Ester;12
+Osmarina;17
+Sebastião ;45

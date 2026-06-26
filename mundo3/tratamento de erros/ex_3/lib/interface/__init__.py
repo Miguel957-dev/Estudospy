@@ -29,3 +29,4 @@ def menu(lista):
     print(linha())
     opc = leiaint('Sua opção: ')
     return opc
+

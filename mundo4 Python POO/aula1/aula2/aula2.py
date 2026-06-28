@@ -11,24 +11,31 @@ class Gafanhoto:
     def aniversario(self):
         self.idade += 1
     
-    def mensagem(self):
+    
+    def __str__(self): #Mostrar os dados de uma maneira mais amigavel
         return f"{self.nome} é Gafanhoto e tem {self.idade} anos de vida."
+    
+    def __getstate__(self):
+        return f"Estado: nome {self.nome}; idade = {self.idade}"
+    
 
-    def __str__(self):
-        return "Vou te mostrar uma coisa. "
 #Declaração de Objetos 
 
 g1 = Gafanhoto('Miguel', 17)
 g1.aniversario()
-print(g1.mensagem())
+print(g1)
 
 print(g1.__doc__)
 
 g2 = Gafanhoto('Mauro', 53)
 g2.aniversario()
-print(g2.mensagem())
+print(g2)
 
 g3 = Gafanhoto()
-print(g3.mensagem())
+print(g3.__dict__)#Vai trabalhar com as informações em forma de dicionario sendo atributos
+print(g2.__getstate__())#Esse é um metodo, podendo reescrever os str
+
 
 #obj = MinhaClasse() #Parentense é uma instanciação, chamando o metodos construtor (def__init__(self):)
+
+print(g1.__class__)#Mostra qual classe o objeto pertence

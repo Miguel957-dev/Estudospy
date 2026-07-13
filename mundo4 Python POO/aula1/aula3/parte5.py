@@ -1,6 +1,6 @@
-from rich.traceback import install
+#from rich.traceback import install
 
-install()
+#install()
 
 
 def divisao(x, y):

@@ -33,7 +33,7 @@ class Churrasco:
 
         conteudo = f"{analise}\n{descriçao}\n{compra}\n{custo}\n{custo_pessoa}"
         
-        caixa = Panel(conteudo, title="Produto", style="white", expand=False) 
+        caixa = Panel(conteudo, title=f"{self.nome}", style="white", expand=False) 
         print(caixa)
 
 chu1 = Churrasco('Churrasco igreja', 10)

@@ -1,4 +1,13 @@
 {
-    "python.REPL.enableREPLSmartSend": false,
-    "python-envs.defaultEnvManager": "ms-python.python:system"
+  "python.REPL.enableREPLSmartSend": false,
+  "python-envs.defaultEnvManager": "ms-python.python:system",
+  "editor.quickSuggestions": {
+    "other": "off",
+    "comments": "off",
+    "strings": "off"
+  },
+  "editor.suggestOnTriggerCharacters": false,
+  "editor.inlineSuggest.enabled": false,
+  "editor.acceptSuggestionOnEnter": "off",
+  "editor.parameterHints.enabled": false
 }

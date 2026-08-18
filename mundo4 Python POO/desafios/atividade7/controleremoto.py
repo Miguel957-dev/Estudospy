@@ -4,7 +4,7 @@ from rich.panel import Panel
 class ControleRemoto:
     canal_min:int = 1
     canal_max:int = 6
-    volume_min:int = 1
+    volume_min:int = 0
     volume_max:int = 10
 
 
@@ -22,8 +22,10 @@ class ControleRemoto:
 
     def canal_menos(self):
         if self.ligado:
-            if self.canal_atual > ControleRemoto.canal_min:
-                self.canal_atual -= 1
+            if self.canal_atual == ControleRemoto.canal_min:
+                self.canal_atual = ControleRemoto.canal_max
+            else:
+                self.canal_atual -= 1 
 
     def volume_mais(self):
         if self.ligado:
@@ -61,10 +63,48 @@ class ControleRemoto:
                     conteudo += f"[black on cyan]  [/]"
                 else:
                     conteudo += f"[black on white]  [/]"
+        
+        while True:
+            conteudo = ''
+            if not self.ligado:
+                conteudo = f"[red]A TV está desligada[/red]"
+            else:
+                conteudo = f"[green]CANAL = [/green]"
 
+                for canal in range(ControleRemoto.canal_min, ControleRemoto.canal_max + 1):
+                    if canal == self.canal_atual:
+                        conteudo += f" [yellow on yellow] {canal} [/] "
+                    else:
+                        conteudo += f" {canal} "
+            
+                conteudo += f"\nVOLUME = "
+                for volume in range(ControleRemoto.volume_min, ControleRemoto.volume_max + 1):
+                    if volume <= self.volume_atual:
+                        conteudo += f"[black on cyan]  [/]"
+                    else:
+                        conteudo += f"[black on white]  [/]"
 
-        tv = Panel(conteudo, title = "[TV]", width = 30)
-        print(tv)
+            tv = Panel(conteudo, title = "[TV]", width = 30)
+            print(tv)
+
+            resposta = input(f"< CH{self.canal_atual} >  - VOL{self.volume_atual} + ")
+            if resposta == '@':
+                if not self.ligado:
+                    ControleRemoto.ligar_desligar(self)
+                else:
+                    ControleRemoto.ligar_desligar(self)
+
+            elif resposta == '+':
+                ControleRemoto.volume_mais(self)
+
+            elif resposta == '-':
+                ControleRemoto.volume_menos(self)
+
+            elif resposta == '<':
+                ControleRemoto.canal_menos(self)
+
+            elif resposta == '>':
+                ControleRemoto.canal_mais(self)
 
 c = ControleRemoto(3, 7)
 c.ligar_desligar()

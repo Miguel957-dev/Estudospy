@@ -46,24 +46,6 @@ class ControleRemoto:
 
     def mostrar_tv(self):
         
-        conteudo = ''
-        if not self.ligado:
-            conteudo = f"[red]A TV está desligada[/red]"
-        else:
-            conteudo = f"[green]CANAL = [/green]"
-            for canal in range(ControleRemoto.canal_min, ControleRemoto.canal_max + 1):
-                if canal == self.canal_atual:
-                    conteudo += f" [yellow on yellow] {canal} [/] "
-                else:
-                    conteudo += f" {canal} "
-
-            conteudo += f"\nVOLUME = "
-            for volume in range(ControleRemoto.volume_min, ControleRemoto.volume_max + 1):
-                if volume <= self.volume_atual:
-                    conteudo += f"[black on cyan]  [/]"
-                else:
-                    conteudo += f"[black on white]  [/]"
-        
         while True:
             conteudo = ''
             if not self.ligado:
@@ -90,7 +72,7 @@ class ControleRemoto:
             resposta = input(f"< CH{self.canal_atual} >  - VOL{self.volume_atual} + ")
             if resposta == '@':
                 if not self.ligado:
-                    ControleRemoto.ligar_desligar(self)
+                    self.ligar_desligar(self)
                 else:
                     ControleRemoto.ligar_desligar(self)
 
@@ -101,10 +83,10 @@ class ControleRemoto:
                 ControleRemoto.volume_menos(self)
 
             elif resposta == '<':
-                ControleRemoto.canal_menos(self)
+                self.canal_menos(self)
 
             elif resposta == '>':
-                ControleRemoto.canal_mais(self)
+                self.canal_mais(self)
 
 c = ControleRemoto(3, 7)
 c.ligar_desligar()

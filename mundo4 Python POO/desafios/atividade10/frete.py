@@ -37,7 +37,7 @@ class Caminhao(Transporte):
             print(f"O valor do frete de caminhão de {self.distancia} vai ser de {self.frete}")
 
 class Drone(Transporte):
-    def __init__(self, distancia, frete):
+    def __init__(self, distancia, frete = 0):
             super().__init__(distancia, frete = 0)
             self.distancia = distancia
             self.frete = frete

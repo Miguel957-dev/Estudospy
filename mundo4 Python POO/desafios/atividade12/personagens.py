@@ -1,10 +1,10 @@
 from abc import ABC, abstractmethod
 
 class Personagem(ABC):
-    def __init__(self, nome, vida, golpes):
+    def __init__(self, nome, vida):
         self.nome = nome
         self.vida = vida
-        self.golpes = golpes 
+        self.golpes = [] 
 
     def atacar(self, alvo, força):
         pass
@@ -19,7 +19,21 @@ class Personagem(ABC):
         pass
 
 class Guerreiro(Personagem):
-    pass
+
+    def __init__(self, nome, vida):
+        super().__init__(nome, vida)
+        self.golpes = ["Soco", "Golpe de Machado", "Pulo Giratorio"]
+
+
+    def curar(self):
+        pass
 
 class Mago(Personagem):
-    pass
+
+    def __init__(self, nome, vida):
+        super().__init__(nome, vida)
+        self.golpes = ["Bola de Fogo", "Raio de Luz", "Magia Estática"]
+
+
+    def curar(self):
+        pass

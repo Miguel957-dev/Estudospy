@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from random import *
 
 class Personagem(ABC):
     def __init__(self, nome, vida):
@@ -6,13 +7,22 @@ class Personagem(ABC):
         self.vida = vida
         self.golpes = [] 
 
-    def atacar(self, alvo, força):
-        pass
+    def atacar(self, alvo, força = 100):
+        if self.vida > 0 and alvo.vida > 0:
+            golpe = self.golpes[randrange(0, len(self.golpes))]
+            print(f"{self.nome} atacou {alvo.nome} com um {golpe}.")
+            alvo.receber_dano(força)
+        else:
+            print(f'O ataque {self.nome} -> {alvo.nome} não pode acontecer')
+        
 
 
-    def receber_dano(self):
-        pass
-
+    def receber_dano(self, dano):
+        fator = randint(0, dano)
+        self.vida = self.vida - fator
+        print(f"{self.nome} atacou com a força de {fator}")
+        if self.vida < 0:
+            self.vida = 0
 
     @abstractmethod
     def curar(self):
@@ -26,7 +36,9 @@ class Guerreiro(Personagem):
 
 
     def curar(self):
-        pass
+        fator = randint(0, 100)
+        self.vida += fator
+        print(f"{self.nome} usou faixa para se curar, e ganhou mais {fator} de vida")
 
 class Mago(Personagem):
 
@@ -36,4 +48,6 @@ class Mago(Personagem):
 
 
     def curar(self):
-        pass
+        fator = randint(0, 100)
+        self.vida += fator
+        print(f"{self.nome} usou magia para se curar, e ganhou mais {fator} de vida")

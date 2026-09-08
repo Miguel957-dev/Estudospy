@@ -9,3 +9,5 @@ public + : Visto por todos, ate mesmo fora das classes, feito o atributo normal
 protected # :so pode ser acessado por fihas da clssa mas nunca pelo codigo principal _ antes do atributo
 private - : so pode ser visto no codigo principal __ antes do atributos"""
 #Consenting Adults 
+
+#Sinceramente gosto muito da linguagem pela versatilidade e pela facilidade de aprender em conjunto com a logica de programação e pelo projeto que eu quero que construir, mas isso de adultos consentidos é um lixo de filosofia.

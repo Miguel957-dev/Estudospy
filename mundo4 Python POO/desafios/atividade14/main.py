@@ -4,7 +4,10 @@ def main():
     d1 = Diario()
     d1.escrever("Minha namorada é linda")
     d1.escrever("Eu amo muito ela")
-    d1.ler("123")
+    try:
+        d1.ler("linda")
+    except Exception as e:
+        print(f'[red]ERRO: {e}')
 
 
 if __name__ == "__main__":

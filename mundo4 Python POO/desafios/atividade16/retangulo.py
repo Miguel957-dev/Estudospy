@@ -1,7 +1,10 @@
 class Retangulo():
     def __init__(self, base = 1, altura = 1):
         self.base = base
-        self.altura = altura 
+        self.altura = altura
+
+        self._base = None
+        self._altura = None 
 
     @property
     def medidas(self):

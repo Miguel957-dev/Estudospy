@@ -1,6 +1,5 @@
 from hashlib import sha256
 
-
 class ContaBancaria:
     """
     Cria uma conta bancária e permite fazer saques e depósitos agora melhorada com senha usando o sha-256
@@ -15,6 +14,15 @@ class ContaBancaria:
         self.__hash = sha256(chave.encode()).hexdigest()
         print(f"Conta {self._id} criada com sucesso. Saldo atual de R${self.__saldo:,.2f}")
 
+    def verificar_senha(self, chave):
+        usuario = sha256(chave.encode()).hexdigest()
+        if usuario == self.__hash:
+            return True
+        else:
+            print("Senha invalida")
+            return False
+
+        
     def pede_senha(self) -> str:
         from pwinput import pwinput
         while True:
@@ -30,11 +38,28 @@ class ContaBancaria:
         self.__saldo += valor
         print(f"Depósito de R${valor:,.2f} autorizado na conta {self._id}")
 
-    def sacar(self, valor):
+    def sacar(self, valor:float, chave:str = None):
         valor = abs(valor)
-        if valor > self.__saldo:
-            print(f"Saque NEGADO de R${valor:,.2f} na conta {self._id}: SALDO INSUFICIENTE")
+        if chave is None:
+            chave = self.pede_senha()
+        if self.verificar_senha(chave):         
+            if valor > self.__saldo:
+                print(f"Saque NEGADO de R${valor:,.2f} na conta {self._id}: SALDO INSUFICIENTE")
+            else:
+                self.__saldo -= valor
+                print(f"Saque de R${valor:,.2f} realizado com sucesso na conta {self._id}")
         else:
-            self.__saldo -= valor
-            print(f"Saque de R${valor:,.2f} realizado com sucesso na conta {self._id}")
+            print("Senha não confere saque não autorizado!")
+    @property
+    def nome(self):
+        return self._titular
 
+    @nome.setter 
+    def nome(self, novonome:str = None):
+        chave = self.pede_senha()
+        if self.verificar_senha(chave):
+            if len(novonome) >= 5:
+                self._titular = novonome
+
+        else:
+            print("Senha não confere. Não posso alterar o nome.")

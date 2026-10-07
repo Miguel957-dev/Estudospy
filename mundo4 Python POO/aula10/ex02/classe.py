@@ -24,3 +24,8 @@ class Carteira:
     def __iadd__(self, valor:int|float):
         self.__saldo  = self.__saldo + valor 
         return self
+
+    def __isub__(self, valor:int|float):
+        self.__saldo = self.saldo - valor
+        return self
+    

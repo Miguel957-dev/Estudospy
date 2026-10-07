@@ -14,4 +14,9 @@ Greater than or equal to p1 >= p2                p1.__ge__(p2)
 In-place Addition        p1 += p2                p1.__iadd__(p2)
 In-place Subtract        p1 -= p2                p1.__isub__(p2)
 
+DUCK TYPING
+
+se eu tenho uma função de abrir eu posso usar ele abrir tudo, porta, janlea, latinha e por ai vai.
+
+
 '''

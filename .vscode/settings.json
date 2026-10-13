@@ -2,12 +2,13 @@
   "python.REPL.enableREPLSmartSend": false,
   "python-envs.defaultEnvManager": "ms-python.python:system",
   "editor.quickSuggestions": {
-    "other": "off",
+    "other": "on",
     "comments": "off",
-    "strings": "off"
+    "strings": "on"
   },
-  "editor.suggestOnTriggerCharacters": false,
+  "editor.suggestOnTriggerCharacters": true,
   "editor.inlineSuggest.enabled": false,
-  "editor.acceptSuggestionOnEnter": "off",
-  "editor.parameterHints.enabled": false
+  "editor.acceptSuggestionOnEnter": "on",
+  "editor.parameterHints.enabled": true,
+  "chat.agent.maxRequests": 100
 }
